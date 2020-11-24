@@ -10,6 +10,7 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
     maven(url = "https://papermc.io/repo/repository/maven-public/")
+    maven(url = "https://jitpack.io")
 }
 
 dependencies {
@@ -26,8 +27,13 @@ tasks {
     }
 
     shadowJar {
-        archiveBaseName.set(project.property("plugin.name").toString())
+        archiveBaseName.set(project.property("pluginName").toString())
         archiveVersion.set("")
         archiveClassifier.set("")
+    }
+
+    create<Copy>("docker") {
+        from(shadowJar)
+        into(File(".docker/plugins"))
     }
 }

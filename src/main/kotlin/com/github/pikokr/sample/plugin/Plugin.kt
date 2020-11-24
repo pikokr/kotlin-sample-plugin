@@ -1,4 +1,6 @@
 package com.github.pikokr.sample.plugin
 
-class Plugin {
+import org.bukkit.plugin.java.JavaPlugin
+
+class Plugin : JavaPlugin() {
 }
